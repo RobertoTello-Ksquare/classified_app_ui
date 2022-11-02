@@ -47,7 +47,7 @@ appBar: AppBar(
                 Container(
                   margin: EdgeInsets.only(left:10,right:50.0),
                   child:
-                 Icon(Icons.article_outlined,)),
+                 Icon(Icons.post_add_outlined,)),
                Column(
                   children: [
                     Text("My Ads"),

@@ -1,5 +1,7 @@
 import 'package:classified_app_ui/screens/addlist.dart';
-import 'package:classified_app_ui/screens/edit.dart';
+import 'package:classified_app_ui/screens/create_ad.dart';
+import 'package:classified_app_ui/screens/edit_ad.dart';
+import 'package:classified_app_ui/screens/edit_profile.dart';
 import 'package:classified_app_ui/screens/login.dart';
 import 'package:classified_app_ui/screens/myads.dart';
 import 'package:classified_app_ui/screens/register.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     theme: CustomTheme().theme,
 debugShowCheckedModeBanner: false,
-      home:  Myads(),
+      home:  CreateAd(),
     );
   }
 }

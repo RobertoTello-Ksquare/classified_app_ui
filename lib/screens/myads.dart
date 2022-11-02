@@ -16,7 +16,10 @@ class Myads extends StatelessWidget {
         children: [
           Row(
               children: [
-                Image.asset("assets/images/lion.png")
+                Container(
+                  width: 100,
+                  height: 160,
+                  child: Image.asset("assets/images/photo.jpg"))
               ],
           ),
           Row(
