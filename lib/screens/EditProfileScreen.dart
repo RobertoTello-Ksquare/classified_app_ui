@@ -21,29 +21,29 @@ class Edit extends StatelessWidget {
         child: Column(
           children: [
              SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
         CircleAvatar(backgroundImage: AssetImage("images/lion.png",),radius: 80,), 
           SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
           text_input(text: "RobertoTello",),
               SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
               text_input(text: "roberto@itksquare.com",),
               SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
               text_input(text: "+52 9991638349",),
              SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
-            button_login(text: "Update Profie"),
+            button_login(text: "Update Profie",newRoute: "",),
              SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
-            bottom_text(text: "Logout",)
+            bottom_text(text: "Logout",newRoute: "",)
           ],
         ),
       ),

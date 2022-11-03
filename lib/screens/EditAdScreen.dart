@@ -115,7 +115,7 @@ class EditAd extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: button_login(text: "Submit Ad"),
+                  child: button_login(text: "Submit Ad",newRoute: "",),
                 )
               ],
             ),

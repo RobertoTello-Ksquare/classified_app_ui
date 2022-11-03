@@ -8,36 +8,35 @@ import 'package:flutter/src/widgets/framework.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
          imgtop(),
                 SizedBox(
-                  height: 40,
+                  height: 16,
                 ),
             text_input(text: "Full Name",),
             SizedBox(
-                  height: 20,
+                  height: 12,
                 ),
             text_input(text: "Email Address",),
             SizedBox(
-                  height: 20,
+                  height: 12,
                 ),
             text_input(text: "Mobile Number",),
             SizedBox(
-                  height: 20,
+                  height: 8,
                 ),
             text_input(text: "Password",),
            SizedBox(
-                  height: 20,
+                  height: 8,
                 ),
-          button_login(text: "Register Now"),
+          button_login(text: "Register Now",newRoute: "/home",),
            SizedBox(
-                  height: 20,
+                  height: 12,
                 ),
-          bottom_text(text: "Already have an account?",)
+          bottom_text(text: "Already have an account?",newRoute: "/",)
       ],
       ),
     );
