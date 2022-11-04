@@ -10,8 +10,9 @@ class ImageViewer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final List<String> ads = [
-        "https://voluble-tulumba-4022f0.netlify.app/images/ad_01_01.jpeg",
-        "https://voluble-tulumba-4022f0.netlify.app/images/ad_01_02.jpeg",
+        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_01.jpeg",
+        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_02.jpeg",
+        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_03.jpeg",
       ];
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +32,7 @@ class ImageViewer extends StatelessWidget {
             options: CarouselOptions(viewportFraction: 1.0),
             items: ads
                 .map((item) => Center(
-                    child: Image.network(item, fit: BoxFit.cover, width: 600)))
+                    child: Image.network(item, fit: BoxFit.cover, width:double.infinity,)))
                 .toList(),
           )),
     );
