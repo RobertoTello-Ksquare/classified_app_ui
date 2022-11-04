@@ -74,7 +74,7 @@ class CreateAd extends StatelessWidget {
                  text_large_input(text: "Description"),],),),),
                   Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: button_login(text: "Submit Ad",newRoute: "",),
+                  child: button_login(text: "Submit Ad",newRoute: "/home",),
                 )
 
 

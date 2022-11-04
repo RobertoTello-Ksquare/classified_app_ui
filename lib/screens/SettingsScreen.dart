@@ -1,11 +1,14 @@
-
 import 'package:classified_app_ui/custom_widgets/text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
+  final String link_a = "https://appmaking.com/about";
+  final String link_c = "https://appmaking.com/contact";
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,6 @@ appBar: AppBar(
           centerTitle: true,
           title: Text("Settings"),
           ),
-          
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column( 
@@ -27,18 +29,22 @@ appBar: AppBar(
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(child: const
-                  CircleAvatar(backgroundImage: AssetImage("images/lion.png"),
+                  CircleAvatar(backgroundImage: NetworkImage("https://i1.sndcdn.com/artworks-000282479366-s1ytog-t500x500.jpg"),
 ),),
                 ),
                 Expanded(
-                  child: Column(   crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Roberto",),
                       SizedBox(height: 4,),
                       Text("9991638349")
                     ],),
                 ),
-                  Text("Edit", style:TextStyle(color: Color(0xfff25723),fontWeight: FontWeight.bold))],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/editprofile");
+                    },
+                    child: Text("Edit", style:TextStyle(color: Color(0xfff25723),fontWeight: FontWeight.bold)))],
                   
                 ),
                 SizedBox(height: 20,),
@@ -50,7 +56,9 @@ appBar: AppBar(
                  Icon(Icons.post_add_outlined,)),
                Column(
                   children: [
-                    Text("My Ads"),
+                    GestureDetector(onTap: () {
+                    Navigator.pushNamed(context, "/myads");
+                    },    child: Text("My Ads"))  ,
                   ],),
               ],
               ),
@@ -66,8 +74,8 @@ appBar: AppBar(
                   Column(
                     children: [
                       Container(
-
-                        child: Text("About us")),
+                        child:  GestureDetector(onTap: () =>_launchUrl(link_a),
+                          child: Text("About us"))),
                     ],
                ),
               ],
@@ -83,7 +91,7 @@ appBar: AppBar(
 
                  Column(
                     children: [
-                      Text("Contact Us"),
+                      GestureDetector(onTap: () => _launchUrl(link_c),  child: Text("Contact Us")),
                     ],),
                
               ],
@@ -92,5 +100,12 @@ appBar: AppBar(
               ,),
       )
      );
+  }
+}
+
+Future _launchUrl(url) async {
+  url = Uri.parse(url);
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    throw "Couldn't launch $url";
   }
 }

@@ -1,3 +1,4 @@
+import 'package:classified_app_ui/custom_widgets/list_p.dart';
 import 'package:classified_app_ui/screens/CreateAdScreen.dart';
 import 'package:classified_app_ui/screens/EditAdScreen.dart';
 import 'package:classified_app_ui/screens/EditProfileScreen.dart';
@@ -29,7 +30,9 @@ class RouteGenerator {
 
             case '/editad':
         return MaterialPageRoute(
-          builder: (context) =>EditAd(),);
+          builder: (context) =>EditAd(
+            ads: args,
+          ),);
 
             case '/editprofile':
         return MaterialPageRoute(
@@ -45,7 +48,9 @@ class RouteGenerator {
 
            case '/productdetail':
         return MaterialPageRoute(
-          builder: (context) =>ProductDetail(),);
+          builder: (context) =>ProductDetail(
+            ads:args
+          ),);
 
           case '/setting':
         return MaterialPageRoute(
@@ -53,7 +58,9 @@ class RouteGenerator {
 
           case '/imageviewer':
         return MaterialPageRoute(
-          builder: (context) =>ImageViewer(),);
+          builder: (context) =>ImageViewer(
+                  ads: args,
+          ),);
 
         default:
          return  MaterialPageRoute(builder: (context) {

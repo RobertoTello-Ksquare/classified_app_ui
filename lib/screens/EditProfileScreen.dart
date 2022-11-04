@@ -23,7 +23,7 @@ class Edit extends StatelessWidget {
              SizedBox(
                     height: 8,
                   ),
-        CircleAvatar(backgroundImage: AssetImage("images/lion.png",),radius: 80,), 
+        CircleAvatar(backgroundImage: NetworkImage("https://i1.sndcdn.com/artworks-000282479366-s1ytog-t500x500.jpg",),radius: 80,), 
           SizedBox(
                     height: 8,
                   ),
@@ -39,11 +39,11 @@ class Edit extends StatelessWidget {
              SizedBox(
                     height: 8,
                   ),
-            button_login(text: "Update Profie",newRoute: "",),
+            button_login(text: "Update Profie",newRoute: "/setting",),
              SizedBox(
                     height: 8,
                   ),
-            bottom_text(text: "Logout",newRoute: "",)
+            bottom_text(text: "Logout",newRoute: "/",)
           ],
         ),
       ),

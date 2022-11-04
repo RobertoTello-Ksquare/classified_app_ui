@@ -6,8 +6,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class EditAd extends StatelessWidget {
-  const EditAd({super.key});
-
+   EditAd({super.key, required this.ads});
+dynamic ads;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +48,7 @@ class EditAd extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8)),border:Border.all(color: Colors.grey)
                   ),
-                        child: Image.asset("assets/images/wall.jpg")),
+                        child: Image.network(ads["ads"]["images"][0])),
                     ),
                        Padding(
                          padding: const EdgeInsets.all(8.0),
@@ -57,17 +57,9 @@ class EditAd extends StatelessWidget {
                   width: 50,  decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8)),border:Border.all(color: Colors.grey)
                   ),
-                      child: Image.asset("assets/images/wall.jpg")),
+                      child: Image.network(ads["ads"]["images"][1])),
                        ),
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container(
-                  height:50 ,
-                  width: 50,  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),border:Border.all(color: Colors.grey)
-                  ),
-                      child: Image.asset("assets/images/wall.jpg")),
-                       ),
+              
                   ],
                 ),
                 Padding(
@@ -76,7 +68,7 @@ class EditAd extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        text_input(text: "Used Macbook Pro for sale"),
+                        text_input(text: ads["ads"]["title"]),
                       ],
                     ),
                   ),
@@ -87,7 +79,7 @@ class EditAd extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        text_input(text: "45000"),
+                        text_input(text: ads["ads"]["price"].toString()),
                       ],
                     ),
                   ),
@@ -98,7 +90,7 @@ class EditAd extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        text_input(text: "+52 9991638349"),
+                        text_input(text: ads["ads"]["mobile"]),
                       ],
                     ),
                   ),
@@ -108,14 +100,14 @@ class EditAd extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        text_large_input(text:"Used Mac 2012 for sale with good quality.500 GB SSD. 8GB RAM.Space Grey. Mid 2012 Modal. Includes Charger."),
+                        text_large_input(text:ads["ads"]["description"]),
                       ],
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: button_login(text: "Submit Ad",newRoute: "",),
+                  child: button_login(text: "Submit Ad",newRoute: "/myads",),
                 )
               ],
             ),
