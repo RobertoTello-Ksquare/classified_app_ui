@@ -1,19 +1,18 @@
+// ignore_for_file: avoid_print
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:classified_app_ui/custom_widgets/list_p.dart';
 import 'package:flutter/material.dart';
 class ImageViewer extends StatelessWidget {
-  const ImageViewer({super.key, required ads});
+  const ImageViewer({super.key});
 
-  static const String routeName = 'View images';
+  static const String routeName = "/imageviewer";
 
   @override
   Widget build(BuildContext context) {
-
-    final List<String> ads = [
-        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_01.jpeg",
-        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_02.jpeg",
-        "https://voluble-tulumba-4022f0.netlify.app/images/ad_02_03.jpeg",
-      ];
+var arg = ModalRoute.of(context)!.settings.arguments as Map;
+print(arg["ImageViewer"]);
+    final List<String> ads = [...arg["ImageViewer"]];
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.black,

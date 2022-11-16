@@ -1,4 +1,6 @@
 import 'package:classified_app_ui/custom_widgets/button_login.dart';
+import 'package:classified_app_ui/custom_widgets/list_p.dart';
+import 'package:classified_app_ui/screens/ImageViewerScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -31,7 +33,12 @@ final String link_phone = "tel: +91987654321";
             Text(widget.ads["ads"]["title"], style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),),
             Text(widget.ads["ads"]["price"].toString(),style: TextStyle(color: Color.fromARGB(255, 243, 179, 41), fontSize: 16,fontWeight: FontWeight.bold),),
             GestureDetector(onTap: () {
-              Navigator.pushNamed(context, "/imageviewer");}, 
+              Navigator.push(context,MaterialPageRoute(
+                                builder: (context) => ImageViewer(),
+                                settings: RouteSettings(
+                                arguments: {"ImageViewer":widget.ads["ads"]["images"]},
+                                
+                                ),));}, 
             child: Container(
               height: 300,
               width: double.infinity,

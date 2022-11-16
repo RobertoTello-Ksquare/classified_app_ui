@@ -59,7 +59,7 @@ class RouteGenerator {
           case '/imageviewer':
         return MaterialPageRoute(
           builder: (context) =>ImageViewer(
-                  ads: args,
+                
           ),);
 
         default:
