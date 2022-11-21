@@ -7,37 +7,82 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class Register extends StatelessWidget {
-  const Register({super.key});
+  Register({super.key});
   @override
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+TextEditingController _FullNameCtrl = TextEditingController();
+TextEditingController _EmailCtrl = TextEditingController();
+TextEditingController _MobileCtrl = TextEditingController();
+TextEditingController _PasswordCtrl = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-         imgtop(),
-                SizedBox(
-                  height: 16,
-                ),
-            text_input(text: "Full Name",),
-            SizedBox(
-                  height: 12,
-                ),
-            text_input(text: "Email Address",),
-            SizedBox(
-                  height: 12,
-                ),
-            text_input(text: "Mobile Number",),
-            SizedBox(
-                  height: 8,
-                ),
-            text_input(text: "Password",),
-           SizedBox(
-                  height: 8,
-                ),
-          button_login(text: "Register Now",newRoute: "/home",),
-           SizedBox(
-                  height: 12,
-                ),
-          bottom_text(text: "Already have an account?",newRoute: "/",)
-      ],
+      body: SingleChildScrollView(
+        child: Column(children: [
+      
+      
+           imgtop(),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Form(key: formKey,
+                        autovalidateMode:  AutovalidateMode.onUserInteraction,
+                        child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: TextFormField(validator: (value) {
+                            if (value==null||value.isEmpty) {
+                              return "required field";
+                            }
+                            return null;
+                          },controller: _FullNameCtrl, keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Full Name',hintText: 'Full Name',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12))),
+                          ),
+                          ),
+                          Padding(padding: const EdgeInsets.all(12.0),
+                          child: TextFormField(validator: (value) {
+                           if (value==null||value.isEmpty) {
+                              return "required field";
+                            }
+                            return null;
+                          },controller: _EmailCtrl, keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Email Adress',hintText: 'Email',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12))),
+                          ),),
+                          Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: TextFormField(validator: (value) {
+                            if (value==null||value.isEmpty) {
+                              return "required field";
+                            }
+                            return null;
+                          },controller: _MobileCtrl, keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Mobile Number',hintText: 'Mobile Number',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12))),
+                          ),
+                          ),
+                          Padding(padding: const EdgeInsets.all(12.0),
+                          child: TextFormField(validator: (value) {
+                           if (value==null||value.isEmpty) {
+                              return "required field";
+                            }
+                            return null;
+                          },controller: _PasswordCtrl, keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Password',hintText: 'Password',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12))),
+                          ),),
+                      ],)),
+                          Padding(
+                           padding: const EdgeInsets.only(right: 12,left: 12,top: 12),
+                           child: SizedBox(
+                            height: 50,
+                            width: 450,
+                            child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor:Color(0xfff25723) ),
+                                    child: Text('Register Now'),
+                                    onPressed: (() {
+                                     formKey.currentState?.save();
+                                     formKey.currentState?.validate();
+                                    }),), 
+                           ),),
+          /*  button_login(text: "Register Now",newRoute: "/home",),
+             SizedBox(
+                    height: 12,
+                  ),*/
+            bottom_text(text: "Already have an account?",newRoute: "/",)
+        ],
+        ),
       ),
     );
   }
