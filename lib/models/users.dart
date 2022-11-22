@@ -17,21 +17,20 @@ class UserModel {
 
 UserModel.fromJson(Map<String, dynamic>json){
 id = json['_id'];
-name = json['name'] ?? '';
-email = json['email'] ?? '';
-password = json["password"] ?? '';
-mobile = json['mobile'] ?? '';
-imgURL = json['imgURL'] ?? '';
-'https://via.placeholder.com/300x400';
-  } 
+name = json['name'];
+email = json['email'];
+password = json["password"];
+mobile = json['mobile'];
+imgURL = json['imgURL'];
+} 
 Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-  data['id'] = this.id;
-  data['imgURL'] = this.imgURL;
-  data['mobile'] = this.mobile;
-  data['name'] = this.name;
-  data['email'] = this.email;
-  data['password'] = this.password;
+    final Map<String, dynamic> data = <String, dynamic>{};
+  data['id'] = id;
+  data['imgURL'] = imgURL;
+  data['mobile'] = mobile;
+  data['name'] = name;
+  data['email'] = email;
+  data['password'] = password;
   return data;
     }
 }

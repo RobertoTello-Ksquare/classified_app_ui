@@ -13,7 +13,6 @@ class AdService{
 
       var respJson = jsonDecode(resp.body);
       var postData = respJson['data'];
-      print(respJson);
       ads =
           postData.map<AdModel>((post) => AdModel.fromJson(post)).toList();
 

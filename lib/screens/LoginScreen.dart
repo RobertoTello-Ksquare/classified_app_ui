@@ -3,7 +3,9 @@ import 'package:classified_app_ui/custom_widgets/bottom_text.dart';
 import 'package:classified_app_ui/custom_widgets/button_login.dart';
 import 'package:classified_app_ui/custom_widgets/text_input.dart';
 import 'package:classified_app_ui/models/ads.dart';
+import 'package:classified_app_ui/models/users.dart';
 import 'package:classified_app_ui/services/ad_service.dart';
+import 'package:classified_app_ui/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,6 +21,8 @@ class login extends StatefulWidget {
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 TextEditingController _EmailCtrl = TextEditingController();
 TextEditingController _PasswordCtrl = TextEditingController();
+UserModel user = UserModel();
+
 fetchAllAds() async {
     List<AdModel> ads = [];
      ads = await AdService().fetchAllAds();
@@ -26,6 +30,7 @@ fetchAllAds() async {
 
 class _loginState extends State<login> {
   @override
+  
   Widget build(BuildContext context) {
     print(fetchAllAds());
     return SafeArea(
@@ -51,7 +56,12 @@ class _loginState extends State<login> {
                             return "required field";
                           }
                           return null;
-                        }, controller: _EmailCtrl, keyboardType: TextInputType.text,
+                        },
+                        onSaved: (newValue) {
+                            setState(() {
+                              user.email = newValue;
+                            });
+                          }, controller: _EmailCtrl, keyboardType: TextInputType.text,
                         decoration: InputDecoration(labelText: 'Email Adress',hintText: 'Email',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12)))),
                         
                         ),
@@ -63,7 +73,12 @@ class _loginState extends State<login> {
                               return "required field";
                             }
                             return null;
-                          }, controller: _PasswordCtrl, keyboardType: TextInputType.text,
+                          }, 
+                          onSaved: (newValue) {
+                            setState(() {
+                              user.password = newValue;
+                            });
+                          },controller: _PasswordCtrl, keyboardType: TextInputType.text,
                           decoration: InputDecoration(labelText: 'Password',hintText: 'Password',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12)))),
                         )
                     ],)),
@@ -78,8 +93,9 @@ class _loginState extends State<login> {
                   width: 450,
                   child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor:Color(0xfff25723) ),
                          child: Text('Login'),
-                         onPressed: (() {
+                         onPressed: (() async {
                           formKey.currentState?.save();
+                          await AuthService().login(context, user);
                           formKey.currentState?.validate();
                 
                           //Navigator.pushReplacementNamed(context, newRoute);

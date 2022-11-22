@@ -46,7 +46,7 @@ class AddList extends StatelessWidget {
         child: FutureBuilder(future: AdService().fetchAllAds(),builder: (context, snapshot) {
           if( snapshot.hasData){
             List<AdModel> adds = snapshot.data !;
-            print(adds);
+            //print(adds);
             return GridView.builder(
             gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(
