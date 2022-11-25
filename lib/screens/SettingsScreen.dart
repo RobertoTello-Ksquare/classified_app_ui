@@ -42,7 +42,7 @@ appBar: AppBar(
                 ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, "/editprofile");
+                      Navigator.pushReplacementNamed(context, "/editprofile");
                     },
                     child: Text("Edit", style:TextStyle(color: Color(0xfff25723),fontWeight: FontWeight.bold)))],
                   
@@ -57,7 +57,7 @@ appBar: AppBar(
                Column(
                   children: [
                     GestureDetector(onTap: () {
-                    Navigator.pushNamed(context, "/myads");
+                    Navigator.pushReplacementNamed(context, "/myads");
                     },    child: Text("My Ads"))  ,
                   ],),
               ],

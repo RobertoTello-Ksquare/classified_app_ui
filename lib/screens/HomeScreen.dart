@@ -24,7 +24,7 @@ class AddList extends StatelessWidget {
         ( backgroundColor:  Color(0xfff25723),
           child: Icon(Icons.add_a_photo_outlined, size: 32,),
           onPressed: () {
-            Navigator.pushNamed(context, "/createad");
+            Navigator.pushReplacementNamed(context, "/createad");
         },),
       ),
       appBar: AppBar(
@@ -33,7 +33,7 @@ class AddList extends StatelessWidget {
             children:  [
               Text("Ads Listing"),
               GestureDetector( onTap:(){
-                Navigator.pushNamed(context, "/setting");
+                Navigator.pushReplacementNamed(context, "/setting");
               } ,
               child: CircleAvatar(backgroundImage: NetworkImage("https://i1.sndcdn.com/artworks-000282479366-s1ytog-t500x500.jpg"))),
             ],
@@ -63,7 +63,7 @@ class AddList extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
                     child:GestureDetector(onTap: () {
-                    Navigator.pushNamed(context, "/productdetail",
+                    Navigator.pushReplacementNamed(context, "/productdetail",
                     arguments: {ad});
                     },    child: Image.network(ad.images![0],fit: BoxFit.cover,)),),
         //Container(color: Color.fromARGB(255, 17, 122, 43)),),

@@ -1,12 +1,10 @@
 import 'package:classified_app_ui/custom_widgets/bottom_text.dart';
-import 'package:classified_app_ui/custom_widgets/button_login.dart';
 import 'package:classified_app_ui/custom_widgets/imgtop_widget.dart';
-import 'package:classified_app_ui/custom_widgets/text_input.dart';
 import 'package:classified_app_ui/models/users.dart';
 import 'package:classified_app_ui/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+
 
 class Register extends StatefulWidget {
   Register({super.key});
@@ -18,14 +16,11 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
 TextEditingController _NameCtrl = TextEditingController();
-
 TextEditingController _EmailCtrl = TextEditingController();
-
 TextEditingController _MobileCtrl = TextEditingController();
-
 TextEditingController _PasswordCtrl = TextEditingController();
+RoundedLoadingButtonController _buttonController = RoundedLoadingButtonController();
 
 UserModel user = UserModel();
 
@@ -106,14 +101,17 @@ UserModel user = UserModel();
                            child: SizedBox(
                             height: 50,
                             width: 450,
-                            child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor:Color(0xfff25723) ),
-                                    child: Text('Register Now'),
-                                    onPressed: () async {
-                                formKey.currentState?.save();
-                                await AuthService().register(context, user);
-                              },
-                             ), 
-                           ),),
+                           child: RoundedLoadingButton(
+                   child: Text('Login', style: TextStyle(color: Colors.white)),
+                   controller: _buttonController,color: Color(0xfff25723),borderRadius: 5,width: 450,
+                   resetAfterDuration:true,resetDuration:Duration(seconds: 2),
+                   onPressed: 
+                          (() async {
+                          formKey.currentState?.save();
+                          await AuthService().login(context, user);
+                         }),)
+                ), 
+                           ),
           /* button_login(text: "Register Now",newRoute: "/home",),
              SizedBox(
                     height: 12,

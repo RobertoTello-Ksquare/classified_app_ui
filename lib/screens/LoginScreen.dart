@@ -1,16 +1,11 @@
 
 import 'package:classified_app_ui/custom_widgets/bottom_text.dart';
-import 'package:classified_app_ui/custom_widgets/button_login.dart';
-import 'package:classified_app_ui/custom_widgets/text_input.dart';
 import 'package:classified_app_ui/models/ads.dart';
 import 'package:classified_app_ui/models/users.dart';
 import 'package:classified_app_ui/services/ad_service.dart';
 import 'package:classified_app_ui/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import '../custom_widgets/imgtop_widget.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -21,6 +16,7 @@ class login extends StatefulWidget {
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 TextEditingController _EmailCtrl = TextEditingController();
 TextEditingController _PasswordCtrl = TextEditingController();
+RoundedLoadingButtonController _buttonController = RoundedLoadingButtonController();
 UserModel user = UserModel();
 
 fetchAllAds() async {
@@ -82,7 +78,6 @@ class _loginState extends State<login> {
                           decoration: InputDecoration(labelText: 'Password',hintText: 'Password',enabledBorder: OutlineInputBorder(borderSide:BorderSide(color: Colors.black12)))),
                         )
                     ],)),
-                
                SizedBox(
                       height: 20,
                     ),
@@ -91,28 +86,27 @@ class _loginState extends State<login> {
                 child: SizedBox(
                    height: 50,
                   width: 450,
-                  child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor:Color(0xfff25723) ),
-                         child: Text('Login'),
-                         onPressed: (() async {
+                  child: RoundedLoadingButton(
+                   child: Text('Login', style: TextStyle(color: Colors.white)),
+                   controller: _buttonController,color: Color(0xfff25723),borderRadius: 5,width: 450,
+                   resetAfterDuration:true,resetDuration:Duration(seconds: 2),
+                   onPressed: 
+                          (() async {
                           formKey.currentState?.save();
                           await AuthService().login(context, user);
-                          formKey.currentState?.validate();
-                
-                          //Navigator.pushReplacementNamed(context, newRoute);
-                         }),),
+                         }),)
                 ),
               ),
-               SizedBox(
+               const SizedBox(
                       height: 12,
                     ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
                 child: bottom_text(text: "Don't have any account?",newRoute: "/register",),
-              )
-              ],
+              ),
+              ],),
             ),
         ),
-        ),
-    );
+        );
   }
 }

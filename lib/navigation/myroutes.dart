@@ -31,7 +31,6 @@ class RouteGenerator {
             case '/editad':
         return MaterialPageRoute(
           builder: (context) =>EditAd(
-            ads: args,
           ),);
 
             case '/editprofile':
