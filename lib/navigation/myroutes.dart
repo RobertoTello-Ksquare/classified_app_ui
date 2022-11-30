@@ -1,4 +1,3 @@
-import 'package:classified_app_ui/custom_widgets/list_p.dart';
 import 'package:classified_app_ui/screens/CreateAdScreen.dart';
 import 'package:classified_app_ui/screens/EditAdScreen.dart';
 import 'package:classified_app_ui/screens/EditProfileScreen.dart';
@@ -30,9 +29,8 @@ class RouteGenerator {
 
             case '/editad':
         return MaterialPageRoute(
-          builder: (context) =>EditAd(
-          ),);
-
+          builder: (context) =>EditAd(data: args,),);
+          
             case '/editprofile':
         return MaterialPageRoute(
           builder: (context) =>Edit(),);

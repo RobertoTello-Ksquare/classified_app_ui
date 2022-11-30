@@ -33,7 +33,7 @@ class AddList extends StatelessWidget {
             children:  [
               Text("Ads Listing"),
               GestureDetector( onTap:(){
-                Navigator.pushReplacementNamed(context, "/setting");
+                Navigator.pushNamed(context, "/setting");
               } ,
               child: CircleAvatar(backgroundImage: NetworkImage("https://i1.sndcdn.com/artworks-000282479366-s1ytog-t500x500.jpg"))),
             ],

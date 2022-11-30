@@ -10,20 +10,20 @@ import 'package:http/http.dart';
 
 class AdService{
   Future<List<AdModel>> fetchAllAds() async {
-    List<AdModel> ads = [];
+    List<AdModel> ad = [];
     var url = Uri.parse("${Constants().serverUrl}/ads");
     try {
       var resp = await http.get(url);
 
       var respJson = jsonDecode(resp.body);
       var postData = respJson['data'];
-      ads =
+      ad =
           postData.map<AdModel>((post) => AdModel.fromJson(post)).toList();
 
-      return ads;
+      return ad;
     } catch (e) {
       print(e.toString());
-      return ads;
+      return ad;
     }
   }
 
@@ -77,7 +77,7 @@ class AdService{
     }
   }
 
-  Future<Map<String, dynamic>> updateAd(context, AdModel model, String id) async {
+  Future<Map<String, dynamic>> editAd(context, AdModel model, String id) async {
     FlutterSecureStorage storage = const FlutterSecureStorage();
     Uri url =
         Uri.parse(Constants().serverUrl+ Constants().adsUpdateEndpoint);
@@ -92,7 +92,7 @@ class AdService{
       modelObj = jsonDecode(response.body);
       if (modelObj["status"] == true) {
         AlertManager().displaySnackbar(context, "Ad successfully updated");
-        Navigator.pushReplacementNamed(context, "/myads");
+        Navigator.pushNamed(context, "/myads");
       }
       if (modelObj["status"] == false) {
         AlertManager().displaySnackbar(context, modelObj["message"]["message"]);
